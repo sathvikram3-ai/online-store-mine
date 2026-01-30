@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Product Details</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        nav a:hover {
+            color: #ff6b6b;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 20px;
+        }
+        
+        .breadcrumb {
+            margin-bottom: 2rem;
+            color: #666;
+        }
+        
+        .breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .product-image {
+            width: 100%;
+            height: 400px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #999;
+        }
+        
+        .product-info h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .rating {
+            color: #ffa500;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .price {
+            color: #667eea;
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+        
+        .old-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 1.5rem;
+            margin-left: 1rem;
+        }
+        
+        .product-description {
+            margin: 1.5rem 0;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        .features {
+            margin: 2rem 0;
+        }
+        
+        .features h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .features ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        
+        .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .product-form {
+            margin: 2rem 0;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .quantity-selector input {
+            width: 80px;
+            text-align: center;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #ff6b6b;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1.1rem;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        
+        .btn:hover {
+            background: #ff5252;
+        }
+        
+        .btn-secondary {
+            background: #667eea;
+        }
+        
+        .btn-secondary:hover {
+            background: #5568d3;
+        }
+        
+        .stock-status {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #28a745;
+            color: white;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+        
+        .shipping-info {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .shipping-info h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .tabs {
+            margin-top: 3rem;
+        }
+        
+        .tab-buttons {
+            display: flex;
+            gap: 1rem;
+            border-bottom: 2px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        
+        .tab-button {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: #666;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .tab-button:hover, .tab-button.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+        
+        .tab-content {
+            padding: 1rem 0;
+        }
+        
+        .review {
+            border-bottom: 1px solid #ddd;
+            padding: 1.5rem 0;
+        }
+        
+        .review h4 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .review-rating {
+            color: #ffa500;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .product-detail {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">TechStore</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a> > <a href="products.html">Products</a> > Wireless Headphones Pro
+        </div>
+        
+        <div class="product-detail">
+            <div>
+                <div class="product-image">
+                    Product Image Placeholder
+                </div>
+            </div>
+            
+            <div class="product-info">
+                <h1>Wireless Headphones Pro</h1>
+                <div class="rating">★★★★★ (4.8) - 256 Reviews</div>
+                
+                <div class="stock-status">✓ In Stock</div>
+                
+                <div class="price">
+                    $99.99
+                    <span class="old-price">$149.99</span>
+                </div>
+                
+                <p class="product-description">
+                    Experience premium sound quality with our Wireless Headphones Pro. 
+                    Featuring advanced active noise cancellation, 30-hour battery life, 
+                    and comfortable over-ear design perfect for all-day listening.
+                </p>
+                
+                <div class="features">
+                    <h3>Key Features:</h3>
+                    <ul>
+                        <li>Active Noise Cancellation (ANC)</li>
+                        <li>30-hour battery life with ANC on</li>
+                        <li>Quick charge: 10 min = 5 hours playback</li>
+                        <li>Premium memory foam ear cushions</li>
+                        <li>Bluetooth 5.3 with multipoint connection</li>
+                        <li>Built-in microphone for calls</li>
+                        <li>Foldable design with carrying case</li>
+                    </ul>
+                </div>
+                
+                <form class="product-form" action="cart.html" method="get">
+                    <div class="form-group">
+                        <label for="color">Color:</label>
+                        <select id="color" name="color" required>
+                            <option value="">Select Color</option>
+                            <option value="black">Midnight Black</option>
+                            <option value="silver">Silver</option>
+                            <option value="blue">Ocean Blue</option>
+                            <option value="red">Cherry Red</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="warranty">Warranty:</label>
+                        <select id="warranty" name="warranty" required>
+                            <option value="standard">Standard 1 Year - Free</option>
+                            <option value="extended2">Extended 2 Years - $19.99</option>
+                            <option value="extended3">Extended 3 Years - $29.99</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="quantity">Quantity:</label>
+                        <div class="quantity-selector">
+                            <input type="number" id="quantity" name="quantity" value="1" min="1" max="10" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Add to Cart</button>
+                    <button type="button" class="btn btn-secondary">Buy Now</button>
+                </form>
+                
+                <div class="shipping-info">
+                    <h4>🚚 Shipping Information</h4>
+                    <p>Free standard shipping on orders over $50</p>
+                    <p>Express shipping available at checkout</p>
+                    <p>Estimated delivery: 3-5 business days</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab-buttons">
+                <button class="tab-button active">Description</button>
+                <button class="tab-button">Specifications</button>
+                <button class="tab-button">Reviews</button>
+            </div>
+            
+            <div class="tab-content">
+                <h3>Product Description</h3>
+                <p>
+                    Immerse yourself in your music with the Wireless Headphones Pro. 
+                    Engineered with precision and designed for comfort, these headphones 
+                    deliver exceptional sound quality that brings your favorite tracks to life.
+                </p>
+                <p>
+                    The advanced Active Noise Cancellation technology blocks out ambient noise, 
+                    allowing you to focus on what matters most - your music. Whether you're 
+                    commuting, working, or relaxing at home, enjoy uninterrupted audio bliss.
+                </p>
+                
+                <h3 style="margin-top: 2rem;">Technical Specifications</h3>
+                <ul>
+                    <li><strong>Driver Size:</strong> 40mm</li>
+                    <li><strong>Frequency Response:</strong> 20Hz - 20kHz</li>
+                    <li><strong>Impedance:</strong> 32 Ohms</li>
+                    <li><strong>Bluetooth Version:</strong> 5.3</li>
+                    <li><strong>Battery:</strong> 1000mAh Li-ion</li>
+                    <li><strong>Charging Time:</strong> 2 hours</li>
+                    <li><strong>Weight:</strong> 250g</li>
+                    <li><strong>Dimensions:</strong> 7.5 x 6.5 x 3 inches</li>
+                </ul>
+                
+                <h3 style="margin-top: 2rem;">Customer Reviews</h3>
+                
+                <div class="review">
+                    <h4>Amazing Sound Quality!</h4>
+                    <div class="review-rating">★★★★★</div>
+                    <p><strong>By John D.</strong> - January 15, 2024</p>
+                    <p>These headphones exceeded my expectations. The noise cancellation 
+                    is incredible and the battery life is exactly as advertised. Highly recommend!</p>
+                </div>
+                
+                <div class="review">
+                    <h4>Great for Travel</h4>
+                    <div class="review-rating">★★★★★</div>
+                    <p><strong>By Sarah M.</strong> - January 10, 2024</p>
+                    <p>Perfect for long flights. The ANC blocks out airplane noise completely. 
+                    Very comfortable for extended wear.</p>
+                </div>
+                
+                <div class="review">
+                    <h4>Good but could be better</h4>
+                    <div class="review-rating">★★★★☆</div>
+                    <p><strong>By Mike R.</strong> - January 5, 2024</p>
+                    <p>Sound quality is great, but I wish the ear cups were slightly larger. 
+                    Still a solid purchase for the price.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 TechStore. All rights reserved.</p>
+        <p>Contact: support@techstore.com | Phone: 1-800-TECH-STORE</p>
+    </footer>
+</body>
+</html>
