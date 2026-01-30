@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        nav a:hover {
+            color: #ff6b6b;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 4rem 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #ff6b6b;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #ff5252;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 20px;
+        }
+        
+        .featured-products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            background: #f0f0f0;
+        }
+        
+        .product-card h3 {
+            margin: 1rem 0 0.5rem;
+        }
+        
+        .price {
+            color: #667eea;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+        
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-box {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .feature-box h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">TechStore</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section class="hero">
+        <h1>Welcome to TechStore</h1>
+        <p>Your one-stop shop for the latest electronics and gadgets</p>
+        <a href="products.html" class="btn">Shop Now</a>
+    </section>
+    
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 1rem;">Why Choose Us?</h2>
+        <div class="features">
+            <div class="feature-box">
+                <h3>🚚 Free Shipping</h3>
+                <p>Free delivery on orders over $50</p>
+            </div>
+            <div class="feature-box">
+                <h3>💳 Secure Payment</h3>
+                <p>100% secure transactions</p>
+            </div>
+            <div class="feature-box">
+                <h3>🔄 Easy Returns</h3>
+                <p>30-day return policy</p>
+            </div>
+            <div class="feature-box">
+                <h3>⭐ Best Quality</h3>
+                <p>Top-rated products</p>
+            </div>
+        </div>
+        
+        <h2 style="text-align: center; margin-top: 3rem;">Featured Products</h2>
+        <div class="featured-products">
+            <div class="product-card">
+                <img src="" alt="Wireless Headphones">
+                <h3>Wireless Headphones</h3>
+                <p>Premium sound quality</p>
+                <div class="price">$99.99</div>
+                <a href="products.html" class="btn">View Details</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="" alt="Smart Watch">
+                <h3>Smart Watch</h3>
+                <p>Track your fitness goals</p>
+                <div class="price">$199.99</div>
+                <a href="products.html" class="btn">View Details</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="" alt="Laptop">
+                <h3>Gaming Laptop</h3>
+                <p>High performance gaming</p>
+                <div class="price">$1299.99</div>
+                <a href="products.html" class="btn">View Details</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="" alt="Smartphone">
+                <h3>Smartphone Pro</h3>
+                <p>Latest flagship model</p>
+                <div class="price">$899.99</div>
+                <a href="products.html" class="btn">View Details</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 TechStore. All rights reserved.</p>
+        <p>Contact: support@techstore.com | Phone: 1-800-TECH-STORE</p>
+    </footer>
+</body>
+</html>
