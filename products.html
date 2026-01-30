@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechStore - Products</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        nav a:hover {
+            color: #ff6b6b;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 20px;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .page-header h1 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .filter-section {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .filter-section h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .filter-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .filter-group label {
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+        
+        .filter-group select, .filter-group input {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s;
+            background: white;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            background: #f0f0f0;
+            margin-bottom: 1rem;
+        }
+        
+        .product-card h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .product-card p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .price {
+            color: #667eea;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+        
+        .rating {
+            color: #ffa500;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #ff6b6b;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #ff5252;
+        }
+        
+        .btn-secondary {
+            background: #667eea;
+        }
+        
+        .btn-secondary:hover {
+            background: #5568d3;
+        }
+        
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.6rem;
+            background: #28a745;
+            color: white;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .badge.sale {
+            background: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">TechStore</div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="container">
+        <div class="page-header">
+            <h1>Our Products</h1>
+            <p>Browse our collection of premium electronics</p>
+        </div>
+        
+        <div class="filter-section">
+            <h3>Filter Products</h3>
+            <form>
+                <div class="filter-group">
+                    <label for="category">Category:</label>
+                    <select id="category" name="category">
+                        <option value="all">All Categories</option>
+                        <option value="audio">Audio</option>
+                        <option value="computers">Computers</option>
+                        <option value="wearables">Wearables</option>
+                        <option value="phones">Phones</option>
+                    </select>
+                    
+                    <label for="sort">Sort By:</label>
+                    <select id="sort" name="sort">
+                        <option value="popular">Most Popular</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Highest Rated</option>
+                    </select>
+                    
+                    <label for="search">Search:</label>
+                    <input type="text" id="search" name="search" placeholder="Search products...">
+                </div>
+            </form>
+        </div>
+        
+        <div class="products-grid">
+            <div class="product-card">
+                <span class="badge">New</span>
+                <img src="" alt="Wireless Headphones">
+                <h3>Wireless Headphones Pro</h3>
+                <div class="rating">★★★★★ (4.8)</div>
+                <p>Active noise cancellation, 30-hour battery life</p>
+                <div class="price">$99.99</div>
+                <a href="product-detail.html" class="btn btn-secondary">View Details</a>
+                <a href="cart.html" class="btn">Add to Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <span class="badge sale">Sale</span>
+                <img src="" alt="Smart Watch">
+                <h3>Smart Watch Ultra</h3>
+                <div class="rating">★★★★☆ (4.5)</div>
+                <p>Health tracking, GPS, waterproof design</p>
+                <div class="price">$199.99</div>
+                <a href="product-detail.html" class="btn btn-secondary">View Details</a>
+                <a href="cart.html" class="btn">Add to Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="" alt="Gaming Laptop">
+                <h3>Gaming Laptop X15</h3>
+                <div class="rating">★★★★★ (4.9)</div>
+                <p>RTX 4070, 32GB RAM, 1TB SSD, 165Hz display</p>
+                <div class="price">$1299.99</div>
+                <a href="product-detail.html" class="btn btn-secondary">View Details</a>
+                <a href="cart.html" class="btn">Add to Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <span class="badge">New</span>
+                <img src="" alt="Smartphone">
+                <h3>Smartphone Pro Max</h3>
+                <div class="rating">★★★★★ (4.7)</div>
+                <p>Triple camera, 5G, 256GB storage</p>
+                <div class="price">$899.99</div>
+                <a href="product-detail.html" class="btn btn-secondary">View Details</a>
+                <a href="cart.html" class="btn">Add to Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="" alt="Bluetooth Speaker">
+                <h3>Portable Bluetooth Speaker</h3>
+                <div class="rating">★★★★☆ (4.3)</div>
+                <p>360° sound, waterproof, 12-hour battery</p>
+                <div class="price">$79.99</div>
+                <a href="product-detail.html" class="btn btn-secondary">View Details</a>
+                <a href="cart.html" class="btn">Add to Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <span class="badge sale">Sale</span>
+                <img src="" alt="Tablet">
+                <h3>Tablet Pro 12.9"</h3>
+                <div class="rating">★★★★★ (4.8)</div>
+                <p>Retina display, Apple M2 chip, 128GB</p>
+                <div class="price">$799.99</div>
+                <a href="product-detail.html" class="btn btn-secondary">View Details</a>
+                <a href="cart.html" class="btn">Add to Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="" alt="Wireless Mouse">
+                <h3>Ergonomic Wireless Mouse</h3>
+                <div class="rating">★★★★☆ (4.4)</div>
+                <p>Precision tracking, rechargeable battery</p>
+                <div class="price">$49.99</div>
+                <a href="product-detail.html" class="btn btn-secondary">View Details</a>
+                <a href="cart.html" class="btn">Add to Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <span class="badge">New</span>
+                <img src="" alt="4K Webcam">
+                <h3>4K Webcam Pro</h3>
+                <div class="rating">★★★★★ (4.6)</div>
+                <p>Auto-focus, low-light correction, dual mics</p>
+                <div class="price">$129.99</div>
+                <a href="product-detail.html" class="btn btn-secondary">View Details</a>
+                <a href="cart.html" class="btn">Add to Cart</a>
+            </div>
+            
+            <div class="product-card">
+                <img src="" alt="Mechanical Keyboard">
+                <h3>RGB Mechanical Keyboard</h3>
+                <div class="rating">★★★★☆ (4.5)</div>
+                <p>Cherry MX switches, customizable RGB</p>
+                <div class="price">$159.99</div>
+                <a href="product-detail.html" class="btn btn-secondary">View Details</a>
+                <a href="cart.html" class="btn">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2024 TechStore. All rights reserved.</p>
+        <p>Contact: support@techstore.com | Phone: 1-800-TECH-STORE</p>
+    </footer>
+</body>
+</html>
